@@ -18,16 +18,22 @@
 // Create the Factory class bellow:
 
 class Factory {
-    constructor(make = Mazda, location = "USA", airbags = true, abs = true, warranty = "60,000 miles / 3 years", massBuild, customerBuild) {
+    constructor(make = "Mazda", location = "USA", airbags = true, abs = true, warranty = "60,000 miles / 3 years", massBuild, customerBuild) {
+        this.make = make;
+        this.location= location;
+        this.airbags = airbags;
+        this.abs = abs;
+        this.warranty = warranty;
         this.massBuild = function (quantity, options) {
             console.log("Building " + quantity + " " +   color + " " +  trim + " " + model);
-        }
+        };
         this.customerBuild = function (color, options){
             console.log("Building one " + color +  " " + trim +  " " + model+ "  with the following options: " + options);
         }
     }
 }
 
+console.log(new Factory());
 
 // CREATE A SUB-CLASS CALLED CAR
 // It should extend from Factory.
@@ -37,12 +43,12 @@ class Factory {
 // Write your code below:
 
 class Car extends Factory {
-    constructor (model, doors, color, engineType, transmission, trim, wheelsTrim, audio, seatsTrim, moonRoof, engineSize = 4, navigation = true, backupCamera = true, make, location, airbags, abs, warranty = "100,000 miles / 5 years",){
-        super(warranty);
+    constructor (model, doors, color, engineType, transmission, trim, wheelsTrim, audio, seatsTrim, moonRoof, engineSize = 4, navigation = true, backupCamera = true, make, location, airbags, abs, warranty = "100,000 miles / 5 years"){
+        super(make, location, airbags, abs, warranty);
         this.model = model;
         this.doors = doors;
         this.color = color;
-        this.engineType = engineType;
+        this.engineType = engineType; ``
         this.transmission = transmission;
         this.trim = trim;
         this.wheelsTrim = wheelsTrim;
@@ -52,7 +58,9 @@ class Car extends Factory {
     }
 }
 
-// console.log(Car);
+// console.log(new Car());
+
+// let test
 
 // CREATE A SUB-CLASS CALLED SPORT
 // It should extend from Car.
@@ -61,13 +69,16 @@ class Car extends Factory {
 // Write your code below:
 
 class Sport extends Car {
-    constructor(model, trim, transmission, top, color, seatsTrim, audio, wheelsTrim, moonroof = false, enginetype = "gasoline", convertible = true, doors = 2){
-        this.model = model;
+    constructor(model, trim, transmission, top, color, seatsTrim, audio, wheelsTrim, moonroof= false, engineType = "gasoline", convertible = true, doors = 2 ){
+        super(model, trim, transmission, top, color, seatsTrim, audio, wheelsTrim, moonRoof);
+        this.moonRoof = model;
     }
 }
 
 
 
+
+model, trim, transmission, top, color, seatsTrim, audio, wheelsTrim, moonroof = false, enginetype = "gasoline", convertible = true, doors = 2
 // CREATE A SUB-CLASS CALLED TRUCK
 // Yes...this Mazda factory makes trucks....
 // It should extend from 'Factory'.
